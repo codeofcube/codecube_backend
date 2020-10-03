@@ -1,39 +1,36 @@
 /*
- Navicat MySQL Data Transfer
- 
- Source Server         : localhost
- Source Server Version : 50720
- Source Host           : localhost:3306
- Source Database       : mango
- 
- Target Server Type    : MYSQL
- Target Server Version : 50720
- File Encoding         : 65001
- 
- Date: 2019-01-22 14:49:38
+ Author : å†°ç¾½
+ Date : 2020/8/08 0:01:36
+ Description : é¡¹ç›®æ•°æ®åº“æ„å»ºè„šæœ¬
+ Source Server  : localhost
+ Source Host     : localhost:3306
+ Source Database  : MySQL
+ Source Server Version : 8.0.18
+ How to Run : source DatabaseBuild.sql
  */
-CREATE DATABASE mango;
-use mango;
+CREATE DATABASE IF NOT EXISTS `community_system` CHAR
+SET utf8;
 SET FOREIGN_KEY_CHECKS = 0;
+USE community_system;
 -- ----------------------------
 -- Table structure for sys_config
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_config`;
 CREATE TABLE `sys_config` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '±àºÅ',
-  `value` varchar(100) NOT NULL COMMENT 'Êı¾İÖµ',
-  `label` varchar(100) NOT NULL COMMENT '±êÇ©Ãû',
-  `type` varchar(100) NOT NULL COMMENT 'ÀàĞÍ',
-  `description` varchar(100) NOT NULL COMMENT 'ÃèÊö',
-  `sort` decimal(10, 0) NOT NULL COMMENT 'ÅÅĞò£¨ÉıĞò£©',
-  `create_by` varchar(50) DEFAULT NULL COMMENT '´´½¨ÈË',
-  `create_time` datetime DEFAULT NULL COMMENT '´´½¨Ê±¼ä',
-  `last_update_by` varchar(50) DEFAULT NULL COMMENT '¸üĞÂÈË',
-  `last_update_time` datetime DEFAULT NULL COMMENT '¸üĞÂÊ±¼ä',
-  `remarks` varchar(255) DEFAULT NULL COMMENT '±¸×¢ĞÅÏ¢',
-  `del_flag` tinyint(4) DEFAULT '0' COMMENT 'ÊÇ·ñÉ¾³ı  -1£ºÒÑÉ¾³ı  0£ºÕı³£',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ç¼–å·',
+  `value` varchar(100) NOT NULL COMMENT 'æ•°æ®å€¼',
+  `label` varchar(100) NOT NULL COMMENT 'æ ‡ç­¾å',
+  `type` varchar(100) NOT NULL COMMENT 'ç±»å‹',
+  `description` varchar(100) NOT NULL COMMENT 'æè¿°',
+  `sort` decimal(10, 0) NOT NULL COMMENT 'æ’åºï¼ˆå‡åºï¼‰',
+  `create_by` varchar(50) DEFAULT NULL COMMENT 'åˆ›å»ºäºº',
+  `create_time` datetime DEFAULT NULL COMMENT 'åˆ›å»ºæ—¶é—´',
+  `last_update_by` varchar(50) DEFAULT NULL COMMENT 'æ›´æ–°äºº',
+  `last_update_time` datetime DEFAULT NULL COMMENT 'æ›´æ–°æ—¶é—´',
+  `remarks` varchar(255) DEFAULT NULL COMMENT 'å¤‡æ³¨ä¿¡æ¯',
+  `del_flag` tinyint(4) DEFAULT '0' COMMENT 'æ˜¯å¦åˆ é™¤  -1ï¼šå·²åˆ é™¤  0ï¼šæ­£å¸¸',
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 5 DEFAULT CHARSET = utf8 COMMENT = 'ÏµÍ³ÅäÖÃ±í';
+) ENGINE = InnoDB AUTO_INCREMENT = 5 DEFAULT CHARSET = utf8 COMMENT = 'ç³»ç»Ÿé…ç½®è¡¨';
 -- ----------------------------
 -- Records of sys_config
 -- ----------------------------
@@ -43,13 +40,13 @@ VALUES (
     '#14889A',
     'theme',
     'color',
-    'Ö÷ÌâÉ«',
+    'ä¸»é¢˜è‰²',
     '0',
     'admin',
     '2018-09-23 19:52:54',
     null,
     null,
-    'Ö÷ÌâÉ«',
+    'ä¸»é¢˜è‰²',
     '0'
   );
 -- ----------------------------
@@ -57,24 +54,24 @@ VALUES (
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dept`;
 CREATE TABLE `sys_dept` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '±àºÅ',
-  `name` varchar(50) DEFAULT NULL COMMENT '»ú¹¹Ãû³Æ',
-  `parent_id` bigint(20) DEFAULT NULL COMMENT 'ÉÏ¼¶»ú¹¹ID£¬Ò»¼¶»ú¹¹Îª0',
-  `order_num` int(11) DEFAULT NULL COMMENT 'ÅÅĞò',
-  `create_by` varchar(50) DEFAULT NULL COMMENT '´´½¨ÈË',
-  `create_time` datetime DEFAULT NULL COMMENT '´´½¨Ê±¼ä',
-  `last_update_by` varchar(50) DEFAULT NULL COMMENT '¸üĞÂÈË',
-  `last_update_time` datetime DEFAULT NULL COMMENT '¸üĞÂÊ±¼ä',
-  `del_flag` tinyint(4) DEFAULT '0' COMMENT 'ÊÇ·ñÉ¾³ı  -1£ºÒÑÉ¾³ı  0£ºÕı³£',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ç¼–å·',
+  `name` varchar(50) DEFAULT NULL COMMENT 'æœºæ„åç§°',
+  `parent_id` bigint(20) DEFAULT NULL COMMENT 'ä¸Šçº§æœºæ„IDï¼Œä¸€çº§æœºæ„ä¸º0',
+  `order_num` int(11) DEFAULT NULL COMMENT 'æ’åº',
+  `create_by` varchar(50) DEFAULT NULL COMMENT 'åˆ›å»ºäºº',
+  `create_time` datetime DEFAULT NULL COMMENT 'åˆ›å»ºæ—¶é—´',
+  `last_update_by` varchar(50) DEFAULT NULL COMMENT 'æ›´æ–°äºº',
+  `last_update_time` datetime DEFAULT NULL COMMENT 'æ›´æ–°æ—¶é—´',
+  `del_flag` tinyint(4) DEFAULT '0' COMMENT 'æ˜¯å¦åˆ é™¤  -1ï¼šå·²åˆ é™¤  0ï¼šæ­£å¸¸',
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 36 DEFAULT CHARSET = utf8 COMMENT = '»ú¹¹¹ÜÀí';
+) ENGINE = InnoDB AUTO_INCREMENT = 36 DEFAULT CHARSET = utf8 COMMENT = 'æœºæ„ç®¡ç†';
 -- ----------------------------
 -- Records of sys_dept
 -- ----------------------------
 INSERT INTO `sys_dept`
 VALUES (
     '1',
-    'Çá³¾¼¯ÍÅ',
+    'è½»å°˜é›†å›¢',
     null,
     '0',
     'admin',
@@ -86,7 +83,7 @@ VALUES (
 INSERT INTO `sys_dept`
 VALUES (
     '2',
-    'ÄÁ³¾¼¯ÍÅ',
+    'ç‰§å°˜é›†å›¢',
     null,
     '1',
     'admin',
@@ -98,7 +95,7 @@ VALUES (
 INSERT INTO `sys_dept`
 VALUES (
     '3',
-    'Èı¹ú¼¯ÍÅ',
+    'ä¸‰å›½é›†å›¢',
     null,
     '2',
     'admin',
@@ -110,7 +107,7 @@ VALUES (
 INSERT INTO `sys_dept`
 VALUES (
     '4',
-    'ÉÏº£·Ö¹«Ë¾',
+    'ä¸Šæµ·åˆ†å…¬å¸',
     '2',
     '0',
     'admin',
@@ -122,7 +119,7 @@ VALUES (
 INSERT INTO `sys_dept`
 VALUES (
     '5',
-    '±±¾©·Ö¹«Ë¾',
+    'åŒ—äº¬åˆ†å…¬å¸',
     '1',
     '1',
     'admin',
@@ -134,7 +131,7 @@ VALUES (
 INSERT INTO `sys_dept`
 VALUES (
     '6',
-    '±±¾©·Ö¹«Ë¾',
+    'åŒ—äº¬åˆ†å…¬å¸',
     '2',
     '1',
     'admin',
@@ -146,7 +143,7 @@ VALUES (
 INSERT INTO `sys_dept`
 VALUES (
     '7',
-    '¼¼Êõ²¿',
+    'æŠ€æœ¯éƒ¨',
     '5',
     '0',
     'admin',
@@ -158,7 +155,7 @@ VALUES (
 INSERT INTO `sys_dept`
 VALUES (
     '8',
-    '¼¼Êõ²¿',
+    'æŠ€æœ¯éƒ¨',
     '4',
     '0',
     'admin',
@@ -170,7 +167,7 @@ VALUES (
 INSERT INTO `sys_dept`
 VALUES (
     '9',
-    '¼¼Êõ²¿',
+    'æŠ€æœ¯éƒ¨',
     '6',
     '0',
     'admin',
@@ -182,7 +179,7 @@ VALUES (
 INSERT INTO `sys_dept`
 VALUES (
     '10',
-    'ÊĞ³¡²¿',
+    'å¸‚åœºéƒ¨',
     '5',
     '0',
     'admin',
@@ -194,7 +191,7 @@ VALUES (
 INSERT INTO `sys_dept`
 VALUES (
     '11',
-    'ÊĞ³¡²¿',
+    'å¸‚åœºéƒ¨',
     '6',
     '0',
     'admin',
@@ -206,7 +203,7 @@ VALUES (
 INSERT INTO `sys_dept`
 VALUES (
     '12',
-    'Îº¹ú',
+    'é­å›½',
     '3',
     '0',
     'admin',
@@ -218,7 +215,7 @@ VALUES (
 INSERT INTO `sys_dept`
 VALUES (
     '13',
-    'Êñ¹ú',
+    'èœ€å›½',
     '3',
     '1',
     'admin',
@@ -230,7 +227,7 @@ VALUES (
 INSERT INTO `sys_dept`
 VALUES (
     '14',
-    'Îâ¹ú',
+    'å´å›½',
     '3',
     '2',
     'admin',
@@ -244,20 +241,20 @@ VALUES (
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dict`;
 CREATE TABLE `sys_dict` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '±àºÅ',
-  `value` varchar(100) NOT NULL COMMENT 'Êı¾İÖµ',
-  `label` varchar(100) NOT NULL COMMENT '±êÇ©Ãû',
-  `type` varchar(100) NOT NULL COMMENT 'ÀàĞÍ',
-  `description` varchar(100) NOT NULL COMMENT 'ÃèÊö',
-  `sort` decimal(10, 0) NOT NULL COMMENT 'ÅÅĞò£¨ÉıĞò£©',
-  `create_by` varchar(50) DEFAULT NULL COMMENT '´´½¨ÈË',
-  `create_time` datetime DEFAULT NULL COMMENT '´´½¨Ê±¼ä',
-  `last_update_by` varchar(50) DEFAULT NULL COMMENT '¸üĞÂÈË',
-  `last_update_time` datetime DEFAULT NULL COMMENT '¸üĞÂÊ±¼ä',
-  `remarks` varchar(255) DEFAULT NULL COMMENT '±¸×¢ĞÅÏ¢',
-  `del_flag` tinyint(4) DEFAULT '0' COMMENT 'ÊÇ·ñÉ¾³ı  -1£ºÒÑÉ¾³ı  0£ºÕı³£',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ç¼–å·',
+  `value` varchar(100) NOT NULL COMMENT 'æ•°æ®å€¼',
+  `label` varchar(100) NOT NULL COMMENT 'æ ‡ç­¾å',
+  `type` varchar(100) NOT NULL COMMENT 'ç±»å‹',
+  `description` varchar(100) NOT NULL COMMENT 'æè¿°',
+  `sort` decimal(10, 0) NOT NULL COMMENT 'æ’åºï¼ˆå‡åºï¼‰',
+  `create_by` varchar(50) DEFAULT NULL COMMENT 'åˆ›å»ºäºº',
+  `create_time` datetime DEFAULT NULL COMMENT 'åˆ›å»ºæ—¶é—´',
+  `last_update_by` varchar(50) DEFAULT NULL COMMENT 'æ›´æ–°äºº',
+  `last_update_time` datetime DEFAULT NULL COMMENT 'æ›´æ–°æ—¶é—´',
+  `remarks` varchar(255) DEFAULT NULL COMMENT 'å¤‡æ³¨ä¿¡æ¯',
+  `del_flag` tinyint(4) DEFAULT '0' COMMENT 'æ˜¯å¦åˆ é™¤  -1ï¼šå·²åˆ é™¤  0ï¼šæ­£å¸¸',
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 5 DEFAULT CHARSET = utf8 COMMENT = '×Öµä±í';
+) ENGINE = InnoDB AUTO_INCREMENT = 5 DEFAULT CHARSET = utf8 COMMENT = 'å­—å…¸è¡¨';
 -- ----------------------------
 -- Records of sys_dict
 -- ----------------------------
@@ -265,30 +262,30 @@ INSERT INTO `sys_dict`
 VALUES (
     '1',
     'male',
-    'ÄĞ',
+    'ç”·',
     'sex',
-    'ĞÔ±ğ',
+    'æ€§åˆ«',
     '0',
     'admin',
     '2018-09-23 19:52:54',
     null,
     null,
-    'ĞÔ±ğ',
+    'æ€§åˆ«',
     '0'
   );
 INSERT INTO `sys_dict`
 VALUES (
     '2',
     'female',
-    'Å®',
+    'å¥³',
     'sex',
-    'ĞÔ±ğ',
+    'æ€§åˆ«',
     '1',
     'admin',
     '2018-09-23 19:53:17',
     null,
     null,
-    'ĞÔ±ğ',
+    'æ€§åˆ«',
     '0'
   );
 -- ----------------------------
@@ -296,19 +293,19 @@ VALUES (
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_log`;
 CREATE TABLE `sys_log` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '±àºÅ',
-  `user_name` varchar(50) DEFAULT NULL COMMENT 'ÓÃ»§Ãû',
-  `operation` varchar(50) DEFAULT NULL COMMENT 'ÓÃ»§²Ù×÷',
-  `method` varchar(200) DEFAULT NULL COMMENT 'ÇëÇó·½·¨',
-  `params` varchar(5000) DEFAULT NULL COMMENT 'ÇëÇó²ÎÊı',
-  `time` bigint(20) NOT NULL COMMENT 'Ö´ĞĞÊ±³¤(ºÁÃë)',
-  `ip` varchar(64) DEFAULT NULL COMMENT 'IPµØÖ·',
-  `create_by` varchar(50) DEFAULT NULL COMMENT '´´½¨ÈË',
-  `create_time` datetime DEFAULT NULL COMMENT '´´½¨Ê±¼ä',
-  `last_update_by` varchar(50) DEFAULT NULL COMMENT '¸üĞÂÈË',
-  `last_update_time` datetime DEFAULT NULL COMMENT '¸üĞÂÊ±¼ä',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ç¼–å·',
+  `user_name` varchar(50) DEFAULT NULL COMMENT 'ç”¨æˆ·å',
+  `operation` varchar(50) DEFAULT NULL COMMENT 'ç”¨æˆ·æ“ä½œ',
+  `method` varchar(200) DEFAULT NULL COMMENT 'è¯·æ±‚æ–¹æ³•',
+  `params` varchar(5000) DEFAULT NULL COMMENT 'è¯·æ±‚å‚æ•°',
+  `time` bigint(20) NOT NULL COMMENT 'æ‰§è¡Œæ—¶é•¿(æ¯«ç§’)',
+  `ip` varchar(64) DEFAULT NULL COMMENT 'IPåœ°å€',
+  `create_by` varchar(50) DEFAULT NULL COMMENT 'åˆ›å»ºäºº',
+  `create_time` datetime DEFAULT NULL COMMENT 'åˆ›å»ºæ—¶é—´',
+  `last_update_by` varchar(50) DEFAULT NULL COMMENT 'æ›´æ–°äºº',
+  `last_update_time` datetime DEFAULT NULL COMMENT 'æ›´æ–°æ—¶é—´',
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 2897 DEFAULT CHARSET = utf8 COMMENT = 'ÏµÍ³²Ù×÷ÈÕÖ¾';
+) ENGINE = InnoDB AUTO_INCREMENT = 2897 DEFAULT CHARSET = utf8 COMMENT = 'ç³»ç»Ÿæ“ä½œæ—¥å¿—';
 -- ----------------------------
 -- Records of sys_log
 -- ----------------------------
@@ -891,16 +888,16 @@ VALUES (
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_login_log`;
 CREATE TABLE `sys_login_log` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '±àºÅ',
-  `user_name` varchar(50) DEFAULT NULL COMMENT 'ÓÃ»§Ãû',
-  `status` varchar(50) DEFAULT NULL COMMENT 'µÇÂ¼×´Ì¬£¨online:ÔÚÏß£¬µÇÂ¼³õÊ¼×´Ì¬£¬·½±ãÍ³¼ÆÔÚÏßÈËÊı£»login:ÍË³öµÇÂ¼ºó½«onlineÖÃÎªlogin£»logout:ÍË³öµÇÂ¼£©',
-  `ip` varchar(64) DEFAULT NULL COMMENT 'IPµØÖ·',
-  `create_by` varchar(50) DEFAULT NULL COMMENT '´´½¨ÈË',
-  `create_time` datetime DEFAULT NULL COMMENT '´´½¨Ê±¼ä',
-  `last_update_by` varchar(50) DEFAULT NULL COMMENT '¸üĞÂÈË',
-  `last_update_time` datetime DEFAULT NULL COMMENT '¸üĞÂÊ±¼ä',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ç¼–å·',
+  `user_name` varchar(50) DEFAULT NULL COMMENT 'ç”¨æˆ·å',
+  `status` varchar(50) DEFAULT NULL COMMENT 'ç™»å½•çŠ¶æ€ï¼ˆonline:åœ¨çº¿ï¼Œç™»å½•åˆå§‹çŠ¶æ€ï¼Œæ–¹ä¾¿ç»Ÿè®¡åœ¨çº¿äººæ•°ï¼›login:é€€å‡ºç™»å½•åå°†onlineç½®ä¸ºloginï¼›logout:é€€å‡ºç™»å½•ï¼‰',
+  `ip` varchar(64) DEFAULT NULL COMMENT 'IPåœ°å€',
+  `create_by` varchar(50) DEFAULT NULL COMMENT 'åˆ›å»ºäºº',
+  `create_time` datetime DEFAULT NULL COMMENT 'åˆ›å»ºæ—¶é—´',
+  `last_update_by` varchar(50) DEFAULT NULL COMMENT 'æ›´æ–°äºº',
+  `last_update_time` datetime DEFAULT NULL COMMENT 'æ›´æ–°æ—¶é—´',
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 2804 DEFAULT CHARSET = utf8 COMMENT = 'ÏµÍ³µÇÂ¼ÈÕÖ¾';
+) ENGINE = InnoDB AUTO_INCREMENT = 2804 DEFAULT CHARSET = utf8 COMMENT = 'ç³»ç»Ÿç™»å½•æ—¥å¿—';
 -- ----------------------------
 -- Records of sys_login_log
 -- ----------------------------
@@ -1063,28 +1060,28 @@ VALUES (
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_menu`;
 CREATE TABLE `sys_menu` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '±àºÅ',
-  `name` varchar(50) DEFAULT NULL COMMENT '²Ëµ¥Ãû³Æ',
-  `parent_id` bigint(20) DEFAULT NULL COMMENT '¸¸²Ëµ¥ID£¬Ò»¼¶²Ëµ¥Îª0',
-  `url` varchar(200) DEFAULT NULL COMMENT '²Ëµ¥URL,ÀàĞÍ£º1.ÆÕÍ¨Ò³Ãæ£¨ÈçÓÃ»§¹ÜÀí£¬ /sys/user£© 2.Ç¶Ì×ÍêÕûÍâ²¿Ò³Ãæ£¬ÒÔhttp(s)¿ªÍ·µÄÁ´½Ó 3.Ç¶Ì×·şÎñÆ÷Ò³Ãæ£¬Ê¹ÓÃiframe:Ç°×º+Ä¿±êURL(ÈçSQL¼à¿Ø£¬ iframe:/druid/login.html, iframe:Ç°×º»áÌæ»»³É·şÎñÆ÷µØÖ·)',
-  `perms` varchar(500) DEFAULT NULL COMMENT 'ÊÚÈ¨(¶à¸öÓÃ¶ººÅ·Ö¸ô£¬Èç£ºsys:user:add,sys:user:edit)',
-  `type` int(11) DEFAULT NULL COMMENT 'ÀàĞÍ   0£ºÄ¿Â¼   1£º²Ëµ¥   2£º°´Å¥',
-  `icon` varchar(50) DEFAULT NULL COMMENT '²Ëµ¥Í¼±ê',
-  `order_num` int(11) DEFAULT NULL COMMENT 'ÅÅĞò',
-  `create_by` varchar(50) DEFAULT NULL COMMENT '´´½¨ÈË',
-  `create_time` datetime DEFAULT NULL COMMENT '´´½¨Ê±¼ä',
-  `last_update_by` varchar(50) DEFAULT NULL COMMENT '¸üĞÂÈË',
-  `last_update_time` datetime DEFAULT NULL COMMENT '¸üĞÂÊ±¼ä',
-  `del_flag` tinyint(4) DEFAULT '0' COMMENT 'ÊÇ·ñÉ¾³ı  -1£ºÒÑÉ¾³ı  0£ºÕı³£',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ç¼–å·',
+  `name` varchar(50) DEFAULT NULL COMMENT 'èœå•åç§°',
+  `parent_id` bigint(20) DEFAULT NULL COMMENT 'çˆ¶èœå•IDï¼Œä¸€çº§èœå•ä¸º0',
+  `url` varchar(200) DEFAULT NULL COMMENT 'èœå•URL,ç±»å‹ï¼š1.æ™®é€šé¡µé¢ï¼ˆå¦‚ç”¨æˆ·ç®¡ç†ï¼Œ /sys/userï¼‰ 2.åµŒå¥—å®Œæ•´å¤–éƒ¨é¡µé¢ï¼Œä»¥http(s)å¼€å¤´çš„é“¾æ¥ 3.åµŒå¥—æœåŠ¡å™¨é¡µé¢ï¼Œä½¿ç”¨iframe:å‰ç¼€+ç›®æ ‡URL(å¦‚SQLç›‘æ§ï¼Œ iframe:/druid/login.html, iframe:å‰ç¼€ä¼šæ›¿æ¢æˆæœåŠ¡å™¨åœ°å€)',
+  `perms` varchar(500) DEFAULT NULL COMMENT 'æˆæƒ(å¤šä¸ªç”¨é€—å·åˆ†éš”ï¼Œå¦‚ï¼šsys:user:add,sys:user:edit)',
+  `type` int(11) DEFAULT NULL COMMENT 'ç±»å‹   0ï¼šç›®å½•   1ï¼šèœå•   2ï¼šæŒ‰é’®',
+  `icon` varchar(50) DEFAULT NULL COMMENT 'èœå•å›¾æ ‡',
+  `order_num` int(11) DEFAULT NULL COMMENT 'æ’åº',
+  `create_by` varchar(50) DEFAULT NULL COMMENT 'åˆ›å»ºäºº',
+  `create_time` datetime DEFAULT NULL COMMENT 'åˆ›å»ºæ—¶é—´',
+  `last_update_by` varchar(50) DEFAULT NULL COMMENT 'æ›´æ–°äºº',
+  `last_update_time` datetime DEFAULT NULL COMMENT 'æ›´æ–°æ—¶é—´',
+  `del_flag` tinyint(4) DEFAULT '0' COMMENT 'æ˜¯å¦åˆ é™¤  -1ï¼šå·²åˆ é™¤  0ï¼šæ­£å¸¸',
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 57 DEFAULT CHARSET = utf8 COMMENT = '²Ëµ¥¹ÜÀí';
+) ENGINE = InnoDB AUTO_INCREMENT = 57 DEFAULT CHARSET = utf8 COMMENT = 'èœå•ç®¡ç†';
 -- ----------------------------
 -- Records of sys_menu
 -- ----------------------------
 INSERT INTO `sys_menu`
 VALUES (
     '1',
-    'ÏµÍ³¹ÜÀí',
+    'ç³»ç»Ÿç®¡ç†',
     '0',
     null,
     null,
@@ -1100,7 +1097,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '2',
-    'ÓÃ»§¹ÜÀí',
+    'ç”¨æˆ·ç®¡ç†',
     '1',
     '/sys/user',
     null,
@@ -1116,7 +1113,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '3',
-    '²é¿´',
+    'æŸ¥çœ‹',
     '2',
     null,
     'sys:user:view',
@@ -1132,7 +1129,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '4',
-    'ĞÂÔö',
+    'æ–°å¢',
     '2',
     null,
     'sys:user:add',
@@ -1148,7 +1145,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '5',
-    'ĞŞ¸Ä',
+    'ä¿®æ”¹',
     '2',
     null,
     'sys:user:edit',
@@ -1164,7 +1161,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '6',
-    'É¾³ı',
+    'åˆ é™¤',
     '2',
     null,
     'sys:user:delete',
@@ -1180,7 +1177,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '7',
-    '»ú¹¹¹ÜÀí',
+    'æœºæ„ç®¡ç†',
     '1',
     '/sys/dept',
     null,
@@ -1196,7 +1193,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '8',
-    '²é¿´',
+    'æŸ¥çœ‹',
     '7',
     null,
     'sys:dept:view',
@@ -1212,7 +1209,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '9',
-    'ĞÂÔö',
+    'æ–°å¢',
     '7',
     null,
     'sys:dept:add',
@@ -1228,7 +1225,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '10',
-    'ĞŞ¸Ä',
+    'ä¿®æ”¹',
     '7',
     null,
     'sys:dept:edit',
@@ -1244,7 +1241,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '11',
-    'É¾³ı',
+    'åˆ é™¤',
     '7',
     null,
     'sys:dept:delete',
@@ -1260,7 +1257,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '12',
-    '½ÇÉ«¹ÜÀí',
+    'è§’è‰²ç®¡ç†',
     '1',
     '/sys/role',
     null,
@@ -1276,7 +1273,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '13',
-    '²é¿´',
+    'æŸ¥çœ‹',
     '12',
     null,
     'sys:role:view',
@@ -1292,7 +1289,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '14',
-    'ĞÂÔö',
+    'æ–°å¢',
     '12',
     null,
     'sys:role:add',
@@ -1308,7 +1305,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '15',
-    'ĞŞ¸Ä',
+    'ä¿®æ”¹',
     '12',
     null,
     'sys:role:edit',
@@ -1324,7 +1321,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '16',
-    'É¾³ı',
+    'åˆ é™¤',
     '12',
     null,
     'sys:role:delete',
@@ -1340,7 +1337,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '17',
-    '²Ëµ¥¹ÜÀí',
+    'èœå•ç®¡ç†',
     '1',
     '/sys/menu',
     null,
@@ -1356,7 +1353,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '18',
-    '²é¿´',
+    'æŸ¥çœ‹',
     '17',
     null,
     'sys:menu:view',
@@ -1372,7 +1369,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '19',
-    'ĞÂÔö',
+    'æ–°å¢',
     '17',
     null,
     'sys:menu:add',
@@ -1388,7 +1385,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '20',
-    'ĞŞ¸Ä',
+    'ä¿®æ”¹',
     '17',
     null,
     'sys:menu:edit',
@@ -1404,7 +1401,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '21',
-    'É¾³ı',
+    'åˆ é™¤',
     '17',
     null,
     'sys:menu:delete',
@@ -1420,7 +1417,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '22',
-    '×Öµä¹ÜÀí',
+    'å­—å…¸ç®¡ç†',
     '1',
     '/sys/dict',
     null,
@@ -1436,7 +1433,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '23',
-    '²é¿´',
+    'æŸ¥çœ‹',
     '22',
     null,
     'sys:dict:view',
@@ -1452,7 +1449,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '24',
-    'ĞÂÔö',
+    'æ–°å¢',
     '22',
     null,
     'sys:dict:add',
@@ -1468,7 +1465,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '25',
-    'ĞŞ¸Ä',
+    'ä¿®æ”¹',
     '22',
     null,
     'sys:dict:edit',
@@ -1484,7 +1481,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '26',
-    'É¾³ı',
+    'åˆ é™¤',
     '22',
     null,
     'sys:dict:delete',
@@ -1500,7 +1497,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '27',
-    'ÏµÍ³ÅäÖÃ',
+    'ç³»ç»Ÿé…ç½®',
     '1',
     '/sys/config',
     null,
@@ -1516,7 +1513,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '28',
-    '²é¿´',
+    'æŸ¥çœ‹',
     '27',
     null,
     'sys:config:view',
@@ -1532,7 +1529,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '29',
-    'ĞÂÔö',
+    'æ–°å¢',
     '27',
     null,
     'sys:config:add',
@@ -1548,7 +1545,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '30',
-    'ĞŞ¸Ä',
+    'ä¿®æ”¹',
     '27',
     null,
     'sys:config:edit',
@@ -1564,7 +1561,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '31',
-    'É¾³ı',
+    'åˆ é™¤',
     '27',
     null,
     'sys:config:delete',
@@ -1580,7 +1577,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '32',
-    'µÇÂ¼ÈÕÖ¾',
+    'ç™»å½•æ—¥å¿—',
     '1',
     '/sys/loginlog',
     null,
@@ -1596,7 +1593,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '33',
-    '²é¿´',
+    'æŸ¥çœ‹',
     '32',
     null,
     'sys:loginlog:view',
@@ -1612,7 +1609,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '34',
-    'É¾³ı',
+    'åˆ é™¤',
     '32',
     null,
     'sys:loginlog:delete',
@@ -1628,7 +1625,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '35',
-    '²Ù×÷ÈÕÖ¾',
+    'æ“ä½œæ—¥å¿—',
     '1',
     '/sys/log',
     null,
@@ -1644,7 +1641,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '36',
-    '²é¿´',
+    'æŸ¥çœ‹',
     '35',
     null,
     'sys:log:view',
@@ -1660,7 +1657,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '37',
-    'É¾³ı',
+    'åˆ é™¤',
     '35',
     null,
     'sys:log:delete',
@@ -1676,7 +1673,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '38',
-    'ÏµÍ³¼à¿Ø',
+    'ç³»ç»Ÿç›‘æ§',
     '0',
     '',
     '',
@@ -1692,7 +1689,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '39',
-    'Êı¾İ¼à¿Ø',
+    'æ•°æ®ç›‘æ§',
     '38',
     'http://127.0.0.1:8001/druid/login.html',
     null,
@@ -1708,7 +1705,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '40',
-    '²é¿´',
+    'æŸ¥çœ‹',
     '39',
     null,
     'sys:druid:view',
@@ -1724,7 +1721,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '41',
-    '·şÎñ¼à¿Ø',
+    'æœåŠ¡ç›‘æ§',
     '38',
     'http://127.0.0.1:8000/',
     null,
@@ -1740,7 +1737,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '42',
-    '²é¿´',
+    'æŸ¥çœ‹',
     '41',
     null,
     'sys:monitor:view',
@@ -1756,7 +1753,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '43',
-    '·şÎñÖÎÀí',
+    'æœåŠ¡æ²»ç†',
     '0',
     '',
     '',
@@ -1772,7 +1769,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '44',
-    '×¢²áÖĞĞÄ',
+    'æ³¨å†Œä¸­å¿ƒ',
     '43',
     'http://127.0.0.1:8500',
     null,
@@ -1788,7 +1785,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '45',
-    '²é¿´',
+    'æŸ¥çœ‹',
     '44',
     null,
     'sys:consul:view',
@@ -1804,7 +1801,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '46',
-    '½Ó¿ÚÎÄµµ',
+    'æ¥å£æ–‡æ¡£',
     '0',
     'http://127.0.0.1:8001/swagger-ui.html',
     null,
@@ -1820,7 +1817,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '47',
-    '²é¿´',
+    'æŸ¥çœ‹',
     '46',
     null,
     'sys:swagger:view',
@@ -1836,7 +1833,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '48',
-    '´úÂëÉú³É',
+    'ä»£ç ç”Ÿæˆ',
     '0',
     '/generator/generator',
     '',
@@ -1852,7 +1849,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '49',
-    '²é¿´',
+    'æŸ¥çœ‹',
     '48',
     null,
     'sys:generator:view',
@@ -1868,7 +1865,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '50',
-    'ÔÚÏßÓÃ»§',
+    'åœ¨çº¿ç”¨æˆ·',
     '0',
     '/sys/online',
     '',
@@ -1884,7 +1881,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '51',
-    '²é¿´',
+    'æŸ¥çœ‹',
     '50',
     null,
     'sys:online:view',
@@ -1900,7 +1897,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '52',
-    'Ê¹ÓÃ°¸Àı',
+    'ä½¿ç”¨æ¡ˆä¾‹',
     '0',
     null,
     null,
@@ -1916,7 +1913,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '53',
-    '¹ú¼Ê»¯',
+    'å›½é™…åŒ–',
     '52',
     '/demo/i18n',
     null,
@@ -1932,7 +1929,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '54',
-    '²é¿´',
+    'æŸ¥çœ‹',
     '53',
     null,
     'sys:dict:view',
@@ -1948,7 +1945,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '55',
-    '»»Æ¤·ô',
+    'æ¢çš®è‚¤',
     '52',
     '/demo/theme',
     null,
@@ -1964,7 +1961,7 @@ VALUES (
 INSERT INTO `sys_menu`
 VALUES (
     '56',
-    '²é¿´',
+    'æŸ¥çœ‹',
     '55',
     null,
     'sys:dict:view',
@@ -1982,16 +1979,16 @@ VALUES (
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role`;
 CREATE TABLE `sys_role` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '±àºÅ',
-  `name` varchar(100) DEFAULT NULL COMMENT '½ÇÉ«Ãû³Æ',
-  `remark` varchar(100) DEFAULT NULL COMMENT '±¸×¢',
-  `create_by` varchar(50) DEFAULT NULL COMMENT '´´½¨ÈË',
-  `create_time` datetime DEFAULT NULL COMMENT '´´½¨Ê±¼ä',
-  `last_update_by` varchar(50) DEFAULT NULL COMMENT '¸üĞÂÈË',
-  `last_update_time` datetime DEFAULT NULL COMMENT '¸üĞÂÊ±¼ä',
-  `del_flag` tinyint(4) DEFAULT '0' COMMENT 'ÊÇ·ñÉ¾³ı  -1£ºÒÑÉ¾³ı  0£ºÕı³£',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ç¼–å·',
+  `name` varchar(100) DEFAULT NULL COMMENT 'è§’è‰²åç§°',
+  `remark` varchar(100) DEFAULT NULL COMMENT 'å¤‡æ³¨',
+  `create_by` varchar(50) DEFAULT NULL COMMENT 'åˆ›å»ºäºº',
+  `create_time` datetime DEFAULT NULL COMMENT 'åˆ›å»ºæ—¶é—´',
+  `last_update_by` varchar(50) DEFAULT NULL COMMENT 'æ›´æ–°äºº',
+  `last_update_time` datetime DEFAULT NULL COMMENT 'æ›´æ–°æ—¶é—´',
+  `del_flag` tinyint(4) DEFAULT '0' COMMENT 'æ˜¯å¦åˆ é™¤  -1ï¼šå·²åˆ é™¤  0ï¼šæ­£å¸¸',
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 9 DEFAULT CHARSET = utf8 COMMENT = '½ÇÉ«¹ÜÀí';
+) ENGINE = InnoDB AUTO_INCREMENT = 9 DEFAULT CHARSET = utf8 COMMENT = 'è§’è‰²ç®¡ç†';
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
@@ -1999,7 +1996,7 @@ INSERT INTO `sys_role`
 VALUES (
     '1',
     'admin',
-    '³¬¼¶¹ÜÀíÔ±',
+    'è¶…çº§ç®¡ç†å‘˜',
     'admin',
     '2019-01-19 11:11:11',
     'admin',
@@ -2010,7 +2007,7 @@ INSERT INTO `sys_role`
 VALUES (
     '2',
     'mng',
-    'ÏîÄ¿¾­Àí',
+    'é¡¹ç›®ç»ç†',
     'admin',
     '2019-01-19 11:11:11',
     'admin',
@@ -2021,7 +2018,7 @@ INSERT INTO `sys_role`
 VALUES (
     '3',
     'dev',
-    '¿ª·¢ÈËÔ±',
+    'å¼€å‘äººå‘˜',
     'admin',
     '2019-01-19 11:11:11',
     'admin',
@@ -2032,7 +2029,7 @@ INSERT INTO `sys_role`
 VALUES (
     '4',
     'test',
-    '²âÊÔÈËÔ±',
+    'æµ‹è¯•äººå‘˜',
     'admin',
     '2019-01-19 11:11:11',
     'admin',
@@ -2044,15 +2041,15 @@ VALUES (
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role_dept`;
 CREATE TABLE `sys_role_dept` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '±àºÅ',
-  `role_id` bigint(20) DEFAULT NULL COMMENT '½ÇÉ«ID',
-  `dept_id` bigint(20) DEFAULT NULL COMMENT '»ú¹¹ID',
-  `create_by` varchar(50) DEFAULT NULL COMMENT '´´½¨ÈË',
-  `create_time` datetime DEFAULT NULL COMMENT '´´½¨Ê±¼ä',
-  `last_update_by` varchar(50) DEFAULT NULL COMMENT '¸üĞÂÈË',
-  `last_update_time` datetime DEFAULT NULL COMMENT '¸üĞÂÊ±¼ä',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ç¼–å·',
+  `role_id` bigint(20) DEFAULT NULL COMMENT 'è§’è‰²ID',
+  `dept_id` bigint(20) DEFAULT NULL COMMENT 'æœºæ„ID',
+  `create_by` varchar(50) DEFAULT NULL COMMENT 'åˆ›å»ºäºº',
+  `create_time` datetime DEFAULT NULL COMMENT 'åˆ›å»ºæ—¶é—´',
+  `last_update_by` varchar(50) DEFAULT NULL COMMENT 'æ›´æ–°äºº',
+  `last_update_time` datetime DEFAULT NULL COMMENT 'æ›´æ–°æ—¶é—´',
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 4 DEFAULT CHARSET = utf8 COMMENT = '½ÇÉ«»ú¹¹';
+) ENGINE = InnoDB AUTO_INCREMENT = 4 DEFAULT CHARSET = utf8 COMMENT = 'è§’è‰²æœºæ„';
 -- ----------------------------
 -- Records of sys_role_dept
 -- ----------------------------
@@ -2091,15 +2088,15 @@ VALUES (
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role_menu`;
 CREATE TABLE `sys_role_menu` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '±àºÅ',
-  `role_id` bigint(20) DEFAULT NULL COMMENT '½ÇÉ«ID',
-  `menu_id` bigint(20) DEFAULT NULL COMMENT '²Ëµ¥ID',
-  `create_by` varchar(50) DEFAULT NULL COMMENT '´´½¨ÈË',
-  `create_time` datetime DEFAULT NULL COMMENT '´´½¨Ê±¼ä',
-  `last_update_by` varchar(50) DEFAULT NULL COMMENT '¸üĞÂÈË',
-  `last_update_time` datetime DEFAULT NULL COMMENT '¸üĞÂÊ±¼ä',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ç¼–å·',
+  `role_id` bigint(20) DEFAULT NULL COMMENT 'è§’è‰²ID',
+  `menu_id` bigint(20) DEFAULT NULL COMMENT 'èœå•ID',
+  `create_by` varchar(50) DEFAULT NULL COMMENT 'åˆ›å»ºäºº',
+  `create_time` datetime DEFAULT NULL COMMENT 'åˆ›å»ºæ—¶é—´',
+  `last_update_by` varchar(50) DEFAULT NULL COMMENT 'æ›´æ–°äºº',
+  `last_update_time` datetime DEFAULT NULL COMMENT 'æ›´æ–°æ—¶é—´',
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 623 DEFAULT CHARSET = utf8 COMMENT = '½ÇÉ«²Ëµ¥';
+) ENGINE = InnoDB AUTO_INCREMENT = 623 DEFAULT CHARSET = utf8 COMMENT = 'è§’è‰²èœå•';
 -- ----------------------------
 -- Records of sys_role_menu
 -- ----------------------------
@@ -2870,24 +2867,24 @@ VALUES (
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user`;
 CREATE TABLE `sys_user` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '±àºÅ',
-  `name` varchar(50) NOT NULL COMMENT 'ÓÃ»§Ãû',
-  `nick_name` varchar(150) DEFAULT NULL COMMENT 'êÇ³Æ',
-  `avatar` varchar(150) DEFAULT NULL COMMENT 'Í·Ïñ',
-  `password` varchar(100) DEFAULT NULL COMMENT 'ÃÜÂë',
-  `salt` varchar(40) DEFAULT NULL COMMENT '¼ÓÃÜÑÎ',
-  `email` varchar(100) DEFAULT NULL COMMENT 'ÓÊÏä',
-  `mobile` varchar(100) DEFAULT NULL COMMENT 'ÊÖ»úºÅ',
-  `status` tinyint(4) DEFAULT NULL COMMENT '×´Ì¬  0£º½ûÓÃ   1£ºÕı³£',
-  `dept_id` bigint(20) DEFAULT NULL COMMENT '»ú¹¹ID',
-  `create_by` varchar(50) DEFAULT NULL COMMENT '´´½¨ÈË',
-  `create_time` datetime DEFAULT NULL COMMENT '´´½¨Ê±¼ä',
-  `last_update_by` varchar(50) DEFAULT NULL COMMENT '¸üĞÂÈË',
-  `last_update_time` datetime DEFAULT NULL COMMENT '¸üĞÂÊ±¼ä',
-  `del_flag` tinyint(4) DEFAULT '0' COMMENT 'ÊÇ·ñÉ¾³ı  -1£ºÒÑÉ¾³ı  0£ºÕı³£',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ç¼–å·',
+  `name` varchar(50) NOT NULL COMMENT 'ç”¨æˆ·å',
+  `nick_name` varchar(150) DEFAULT NULL COMMENT 'æ˜µç§°',
+  `avatar` varchar(150) DEFAULT NULL COMMENT 'å¤´åƒ',
+  `password` varchar(100) DEFAULT NULL COMMENT 'å¯†ç ',
+  `salt` varchar(40) DEFAULT NULL COMMENT 'åŠ å¯†ç›',
+  `email` varchar(100) DEFAULT NULL COMMENT 'é‚®ç®±',
+  `mobile` varchar(100) DEFAULT NULL COMMENT 'æ‰‹æœºå·',
+  `status` tinyint(4) DEFAULT NULL COMMENT 'çŠ¶æ€  0ï¼šç¦ç”¨   1ï¼šæ­£å¸¸',
+  `dept_id` bigint(20) DEFAULT NULL COMMENT 'æœºæ„ID',
+  `create_by` varchar(50) DEFAULT NULL COMMENT 'åˆ›å»ºäºº',
+  `create_time` datetime DEFAULT NULL COMMENT 'åˆ›å»ºæ—¶é—´',
+  `last_update_by` varchar(50) DEFAULT NULL COMMENT 'æ›´æ–°äºº',
+  `last_update_time` datetime DEFAULT NULL COMMENT 'æ›´æ–°æ—¶é—´',
+  `del_flag` tinyint(4) DEFAULT '0' COMMENT 'æ˜¯å¦åˆ é™¤  -1ï¼šå·²åˆ é™¤  0ï¼šæ­£å¸¸',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE = InnoDB AUTO_INCREMENT = 34 DEFAULT CHARSET = utf8 COMMENT = 'ÓÃ»§¹ÜÀí';
+) ENGINE = InnoDB AUTO_INCREMENT = 34 DEFAULT CHARSET = utf8 COMMENT = 'ç”¨æˆ·ç®¡ç†';
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
@@ -2895,7 +2892,7 @@ INSERT INTO `sys_user`
 VALUES (
     '1',
     'admin',
-    '³¬¹Ü',
+    'è¶…ç®¡',
     null,
     'bd1718f058d8a02468134432b8656a86',
     'YzcmCZNvbXocrsz9dm8e',
@@ -2913,7 +2910,7 @@ INSERT INTO `sys_user`
 VALUES (
     '22',
     'liubei',
-    'Áõ±¸',
+    'åˆ˜å¤‡',
     null,
     'fd80ebd493a655608dc893a9f897d845',
     'YzcmCZNvbXocrsz9dm8e',
@@ -2931,7 +2928,7 @@ INSERT INTO `sys_user`
 VALUES (
     '23',
     'zhaoyun',
-    'ÕÔÔÆ',
+    'èµµäº‘',
     null,
     'fd80ebd493a655608dc893a9f897d845',
     'YzcmCZNvbXocrsz9dm8e',
@@ -2949,7 +2946,7 @@ INSERT INTO `sys_user`
 VALUES (
     '24',
     'zhugeliang',
-    'Öî¸ğÁÁ',
+    'è¯¸è‘›äº®',
     null,
     'fd80ebd493a655608dc893a9f897d845',
     'YzcmCZNvbXocrsz9dm8e',
@@ -2967,7 +2964,7 @@ INSERT INTO `sys_user`
 VALUES (
     '25',
     'caocao',
-    '²Ü²Ù',
+    'æ›¹æ“',
     null,
     'fd80ebd493a655608dc893a9f897d845',
     'YzcmCZNvbXocrsz9dm8e',
@@ -2985,7 +2982,7 @@ INSERT INTO `sys_user`
 VALUES (
     '26',
     'dianwei',
-    'µäÎ¤',
+    'å…¸éŸ¦',
     null,
     'fd80ebd493a655608dc893a9f897d845',
     'YzcmCZNvbXocrsz9dm8e',
@@ -3003,7 +3000,7 @@ INSERT INTO `sys_user`
 VALUES (
     '27',
     'xiahoudun',
-    'ÏÄºîª',
+    'å¤ä¾¯æƒ‡',
     null,
     'fd80ebd493a655608dc893a9f897d845',
     'YzcmCZNvbXocrsz9dm8e',
@@ -3021,7 +3018,7 @@ INSERT INTO `sys_user`
 VALUES (
     '28',
     'xunyu',
-    'Ü÷ª',
+    'è€å½§',
     null,
     'fd80ebd493a655608dc893a9f897d845',
     'YzcmCZNvbXocrsz9dm8e',
@@ -3039,7 +3036,7 @@ INSERT INTO `sys_user`
 VALUES (
     '29',
     'sunquan',
-    'ËïÈ¨',
+    'å­™æƒ',
     null,
     'fd80ebd493a655608dc893a9f897d845',
     'YzcmCZNvbXocrsz9dm8e',
@@ -3057,7 +3054,7 @@ INSERT INTO `sys_user`
 VALUES (
     '30',
     'zhouyu',
-    'ÖÜè¤',
+    'å‘¨ç‘œ',
     null,
     'fd80ebd493a655608dc893a9f897d845',
     'YzcmCZNvbXocrsz9dm8e',
@@ -3075,7 +3072,7 @@ INSERT INTO `sys_user`
 VALUES (
     '31',
     'luxun',
-    'Â½Ñ·',
+    'é™†é€Š',
     null,
     'fd80ebd493a655608dc893a9f897d845',
     'YzcmCZNvbXocrsz9dm8e',
@@ -3093,7 +3090,7 @@ INSERT INTO `sys_user`
 VALUES (
     '32',
     'huanggai',
-    '»Æ¸Ç',
+    'é»„ç›–',
     null,
     'fd80ebd493a655608dc893a9f897d845',
     'YzcmCZNvbXocrsz9dm8e',
@@ -3112,15 +3109,15 @@ VALUES (
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user_role`;
 CREATE TABLE `sys_user_role` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '±àºÅ',
-  `user_id` bigint(20) DEFAULT NULL COMMENT 'ÓÃ»§ID',
-  `role_id` bigint(20) DEFAULT NULL COMMENT '½ÇÉ«ID',
-  `create_by` varchar(50) DEFAULT NULL COMMENT '´´½¨ÈË',
-  `create_time` datetime DEFAULT NULL COMMENT '´´½¨Ê±¼ä',
-  `last_update_by` varchar(50) DEFAULT NULL COMMENT '¸üĞÂÈË',
-  `last_update_time` datetime DEFAULT NULL COMMENT '¸üĞÂÊ±¼ä',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ç¼–å·',
+  `user_id` bigint(20) DEFAULT NULL COMMENT 'ç”¨æˆ·ID',
+  `role_id` bigint(20) DEFAULT NULL COMMENT 'è§’è‰²ID',
+  `create_by` varchar(50) DEFAULT NULL COMMENT 'åˆ›å»ºäºº',
+  `create_time` datetime DEFAULT NULL COMMENT 'åˆ›å»ºæ—¶é—´',
+  `last_update_by` varchar(50) DEFAULT NULL COMMENT 'æ›´æ–°äºº',
+  `last_update_time` datetime DEFAULT NULL COMMENT 'æ›´æ–°æ—¶é—´',
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 88 DEFAULT CHARSET = utf8 COMMENT = 'ÓÃ»§½ÇÉ«';
+) ENGINE = InnoDB AUTO_INCREMENT = 88 DEFAULT CHARSET = utf8 COMMENT = 'ç”¨æˆ·è§’è‰²';
 -- ----------------------------
 -- Records of sys_user_role
 -- ----------------------------
